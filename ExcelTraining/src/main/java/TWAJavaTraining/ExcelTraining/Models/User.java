@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="User")
+@Table(name = "User")
 public class User {
 
     @Id
@@ -25,5 +25,6 @@ public class User {
     private String name;
     private String phone;
     private String address;
-     
+    private Double income;
+
 }

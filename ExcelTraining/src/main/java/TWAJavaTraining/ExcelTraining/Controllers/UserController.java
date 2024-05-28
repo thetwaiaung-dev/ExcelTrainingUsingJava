@@ -31,7 +31,7 @@ public class UserController {
     @GetMapping
     public String GetList(Model model) {
 
-        List<User> userList = userRepo.findAll();
+        List<User> userList = userRepo.findAllByOrderByAddress();
         model.addAttribute("userList", userList);
 
         return "user_list";
@@ -47,7 +47,7 @@ public class UserController {
         String headerValue = "attachment; filename=userList_" + currentDateTime + ".xlsx";
         response.setHeader(headerkey, headerValue);
 
-        List<User> userList = userRepo.findAll();
+        List<User> userList = userRepo.findAllByOrderByAddress();
         UserExcelReporter excelReporter = new UserExcelReporter(userList);
         excelReporter.export(response);
     }
