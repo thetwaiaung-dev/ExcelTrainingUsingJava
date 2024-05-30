@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import TWAJavaTraining.ExcelTraining.Models.User;
 import TWAJavaTraining.ExcelTraining.Repo.UserRepo;
 import TWAJavaTraining.ExcelTraining.Reports.UserExcelReporter;
+import TWAJavaTraining.ExcelTraining.Service.LoggingService;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +29,12 @@ public class UserController {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private LoggingService loggingService;
+
     @GetMapping
     public String GetList(Model model) {
+        // loggingService.InfoLog("User list get started ...");
 
         List<User> userList = userRepo.findAllByOrderByAddress();
         model.addAttribute("userList", userList);
